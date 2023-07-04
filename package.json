@@ -1,44 +1,97 @@
 {
-  "name": "splayer",
-  "version": "1.1.7",
-  "author": "imsyy",
-  "home": "https://imsyy.top",
-  "github": "https://github.com/imsyy/SPlayer",
+  "name": "NeteaseCloudMusicApi",
+  "version": "4.8.11",
+  "description": "网易云音乐 NodeJS 版 API",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "node app.js",
+    "test": "mocha -r intelli-espower-loader -t 60000 server.test.js main.test.js --exit",
+    "lint": "eslint \"**/*.{js,ts}\"",
+    "lint-fix": "eslint --fix \"**/*.{js,ts}\"",
+    "prepare": "husky install",
+    "pkgwin": "pkg . -t node14-win-x64 -C GZip -o bin/app --no-bytecode",
+    "pkglinux": "pkg . -t node14-linux-x64 -C GZip -o bin/app --no-bytecode",
+    "pkgmacos": "pkg . -t node14-macos-x64 -C GZip -o bin/app --no-bytecode"
   },
+  "bin": "./app.js",
+  "pkg": {
+    "scripts": "module/*.js",
+    "assets": [
+      "node_modules/axios",
+      "node_modules/express",
+      "node_modules/express-fileupload",
+      "node_modules/md5",
+      "node_modules/music-metadata",
+      "node_modules/pac-proxy-agent",
+      "node_modules/qrcode",
+      "node_modules/safe-decode-uri-component",
+      "node_modules/tunnel",
+      "node_modules/yargs",
+      "node_modules/tslib",
+      "node_modules/vm2",
+      "module",
+      "public"
+    ]
+  },
+  "keywords": [
+    "网易云音乐",
+    "网易云",
+    "音乐",
+    "网易云音乐nodejs"
+  ],
+  "main": "main.js",
+  "types": "./interface.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "author": "binaryify",
+  "license": "MIT",
+  "files": [
+    "module",
+    "util",
+    "plugins",
+    "main.d.ts",
+    "interface.d.ts",
+    "module_types",
+    "server.js",
+    "generateConfig.js",
+    "public"
+  ],
   "dependencies": {
-    "@icon-park/vue-next": "^1.4.2",
-    "@ivanv/vue-collapse-transition": "^1.0.2",
-    "artplayer": "^4.5.12",
-    "axios": "^1.2.0",
-    "colorthief": "^2.4.0",
-    "howler": "^2.2.3",
-    "pinia": "^2.0.26",
-    "pinia-plugin-persistedstate": "^3.0.1",
-    "plyr": "^3.7.3",
-    "qrcode.vue": "^3.3.3",
-    "sass": "^1.56.1",
-    "screenfull": "^6.0.2",
-    "swiper": "^9.3.2",
-    "throttle-debounce": "^5.0.0",
-    "vite-plugin-html": "^3.2.0",
-    "vue": "^3.2.45",
-    "vue-i18n": "^9.2.2",
-    "vue-router": "^4.1.6",
-    "vue-slider-component": "4.1.0-beta.7"
+    "axios": "^1.2.2",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.9",
+    "md5": "^2.3.0",
+    "music-metadata": "^7.5.3",
+    "pac-proxy-agent": "^5.0.0",
+    "qrcode": "^1.4.4",
+    "safe-decode-uri-component": "^1.2.1",
+    "tunnel": "^0.0.6",
+    "yargs": "^17.1.1"
   },
   "devDependencies": {
-    "@jridgewell/sourcemap-codec": "^1.4.14",
-    "@rollup/plugin-terser": "^0.4.0",
-    "@vicons/material": "^0.12.0",
-    "@vitejs/plugin-vue": "^4.2.3",
-    "naive-ui": "^2.34.4",
-    "unplugin-auto-import": "^0.12.0",
-    "unplugin-vue-components": "^0.22.11",
-    "vite": "^4.3.8",
-    "vite-plugin-pwa": "^0.15.0"
+    "@types/express": "^4.17.13",
+    "@types/express-fileupload": "^1.2.2",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "16.11.19",
+    "@typescript-eslint/eslint-plugin": "5.0.0",
+    "@typescript-eslint/parser": "5.0.0",
+    "eslint": "8.7.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-html": "7.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "husky": "7.0.4",
+    "intelli-espower-loader": "1.1.0",
+    "lint-staged": "12.1.7",
+    "mocha": "10.0.0",
+    "pkg": "^5.8.0",
+    "power-assert": "1.6.1",
+    "prettier": "2.7.1",
+    "typescript": "4.5.2"
   }
 }
